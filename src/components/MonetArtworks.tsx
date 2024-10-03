@@ -17,7 +17,7 @@ const SingleArtworkDiv=styled.div`
     justify-content: center; 
     max-width: 40%;
     height: auto;
-    padding: 2%;
+    padding:0 1%;
     margin: 1%;
     border: 1px black solid;
     color: gray;

@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     async function fetchData(): Promise<void> {
 
-      //https://api.artic.edu/api/v1/artworks/search?q=Claude+Monet&fields=id,title,artist_title,date_display,is_public_domain,image_id,artist_display,place_of_origin
+      //https://api.artic.edu/api/v1/artworks/search?q=Claude+Monet&fields=id,title,artist_title,date_display,is_public_domain,image_id,artist_display,place_of_origin //add fields with "," if needed
       //Searching for Claude Monet artworks
       const searchURL = 'https://api.artic.edu/api/v1/artworks/search?q=Claude+Monet&fields=id,title,artist_title,date_display,is_public_domain,image_id,artist_display,place_of_origin,credit_line'
 
@@ -39,7 +39,7 @@ function App() {
   }, [data.length]);
 
   return (
-    <ParentDiv style={{ backgroundColor: "#F8F9EE"}}>
+    <ParentDiv>
         <MonetArtworks data={data}/>
     </ParentDiv>
 )
