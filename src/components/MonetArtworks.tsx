@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import styled from "styled-components";
 import { Artwork } from '../interfaces/Artworks';
 
