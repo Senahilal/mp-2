@@ -5,8 +5,8 @@ import { Artwork } from './interfaces/Artworks';
 
 const ParentDiv=styled.div`
     width: 80vw;
-    margin: auto;
-    border: 5px darkgoldenrod solid;
+    margin: 0px auto;
+    border: 1px black solid;
 `;
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
 
       //https://api.artic.edu/api/v1/artworks/search?q=Claude+Monet&fields=id,title,artist_title,date_display,is_public_domain,image_id,artist_display,place_of_origin
       //Searching for Claude Monet artworks
-      const searchURL = 'https://api.artic.edu/api/v1/artworks/search?q=Claude+Monet&fields=id,title,artist_title,date_display,is_public_domain,image_id,artist_display,place_of_origin'
+      const searchURL = 'https://api.artic.edu/api/v1/artworks/search?q=Claude+Monet&fields=id,title,artist_title,date_display,is_public_domain,image_id,artist_display,place_of_origin,credit_line'
 
       // Call the API to find Claude Monet's artworks
       const searchResponse = await fetch(searchURL);
@@ -39,7 +39,7 @@ function App() {
   }, [data.length]);
 
   return (
-    <ParentDiv>
+    <ParentDiv style={{ backgroundColor: "#F8F9EE"}}>
         <MonetArtworks data={data}/>
     </ParentDiv>
 )
