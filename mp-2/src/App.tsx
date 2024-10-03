@@ -14,28 +14,23 @@ function App() {
   // useState Hook to store Data.
   const [data, setData] = useState<Artwork[]>([]);
 
+  //The API is being used: https://api.artic.edu/docs/
+  //Check which fields available:https://api.artic.edu/api/v1/artworks
+
   // useEffect Hook for error handling and re-rendering.
   useEffect(() => {
     async function fetchData(): Promise<void> {
 
+      //https://api.artic.edu/api/v1/artworks/search?q=Claude+Monet&fields=id,title,artist_title,date_display,is_public_domain,image_id,artist_display,place_of_origin
       //Searching for Claude Monet artworks
-      const searchURL = 'https://collectionapi.metmuseum.org/public/collection/v1/search?artistOrCulture=true&q=Claude%20Monet'
+      const searchURL = 'https://api.artic.edu/api/v1/artworks/search?q=Claude+Monet&fields=id,title,artist_title,date_display,is_public_domain,image_id,artist_display,place_of_origin'
 
-      // Call search API to find Claude Monet's artworks
+      // Call the API to find Claude Monet's artworks
       const searchResponse = await fetch(searchURL);
-      // Parse the response as JSON inside the try block
-      const { objectIDs }: { objectIDs: number[] } = await searchResponse.json();
-
-      //Fetching objects of each artwork, one by one
-      const artworkObjects: Artwork[] = [];
-      for (let id of objectIDs) {
-        const object = await fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`);
-        const artworkObject = await object.json();
-        artworkObjects.push(artworkObject); // Adding each artwork object to the array
-      }
+      const { data : artworks }: { data: Artwork[] } = await searchResponse.json();
 
       // Set the fetched artworks into the state
-      setData(artworkObjects);
+      setData(artworks);
     }
 
     fetchData()

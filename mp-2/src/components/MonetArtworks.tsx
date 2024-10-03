@@ -23,19 +23,19 @@ const SingleArtworkDiv=styled.div`
 
 function MonetArtworks(props: { data: Artwork[] }) {
     return (
-      <AllArtworksDiv>
-        {
-          props.data.map((artwork: Artwork) => (
-            <SingleArtworkDiv key={artwork.objectID}>
-              <h1>{artwork.title}</h1>
-              <p>{artwork.artistDisplayName}</p>
-              <p>{artwork.objectDate}</p>
-              <img src={artwork.primaryImageSmall} alt={`image of ${artwork.title}`} />
-            </SingleArtworkDiv>
-          ))
-        }
-      </AllArtworksDiv>
-    );
-  }
+    <AllArtworksDiv>
+    {
+        props.data.map((artwork: Artwork) => (
+        <SingleArtworkDiv key={artwork.id}>
+            <h1>{artwork.title}</h1>
+            <p>{artwork.artist_display}</p>
+            <p>{artwork.date_display}</p>
+            <img src={`https://www.artic.edu/iiif/2/${artwork.image_id}/full/843,/0/default.jpg`} alt={`image of ${artwork.title}`} />
+        </SingleArtworkDiv>
+        ))
+    }
+    </AllArtworksDiv>
+);
+}
 
 export default MonetArtworks;
