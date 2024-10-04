@@ -8,27 +8,28 @@ const AllArtworksDiv=styled.div`
     flex-flow: row wrap;    
     justify-content: space-evenly;
     background-color: #FBFCF8;
+    //align-items: flex-start; //gives asymetrical look
 `;
 
 const SingleArtworkDiv=styled.div`
     display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
+    flex-flow: column nowrap;
     justify-content: center; 
-    max-width: 40%;
+    max-width: 33%;
     height: auto;
-    padding:0 1%;
-    margin: 1%;
-    border: 1px black solid;
+    padding-top: 1%;
+    padding-bottom: 2%;
+    //border: 1px black solid;
     color: gray;
     text-align: center;
+    border-bottom: 1px #D4D3D3 solid;
+    border-left: 2px solid solid;
 `;
 
 const StyledImage = styled.img`
     max-width: 40%;
     height: auto;
     margin: auto;
-    padding: 2% 0;
 `;
 
 
@@ -36,7 +37,6 @@ const StyledInfo = styled.div`
     color: gray;
     text-align: center;
     font-size: 60%;
-    padding: 2%;
 `;
 
 function MonetArtworks(props: { data: Artwork[] }) {
@@ -49,8 +49,8 @@ function MonetArtworks(props: { data: Artwork[] }) {
             
             <StyledInfo>
                 <h3>{artwork.title}</h3>
-                <p> Artist: {artwork.artist_display}</p>
-                <p>Date: {artwork.date_display}</p>
+                <p>{artwork.date_display}</p>
+                <p>{artwork.artist_display}</p>
                 <p><strong>Credit Line:</strong> {artwork.credit_line}</p> 
             </StyledInfo>
         </SingleArtworkDiv>
